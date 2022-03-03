@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    tools:context=".terms">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Terms &amp; Conditions"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_margin="15dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            android:layout_below="@id/top_title"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_panel"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome to EBet Mo!\n\nThese terms and conditions outline the rules and regulations for the use of Ebet Mo's Application.\n\nBy accessing this application we assume you accept these terms and conditions. Do not continue to use Ebet Mo if you do not agree to take all of the terms and conditions stated on this page.\n\nThe following applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice, Verification for seller and all Agreements: To our future user, please be remind that you’ll need to be full verify in order to get access in all our features most importantly the seller features. You just need to follow the instructions we implemented in the verification section. You are obligated to submit one (1) accepted valid ID and give the important information the application requested. We do not tolerate all type of scam, including false information of the posted item or running away with the prize and scamming the winner of your raffle draw will result to a lifetime imprisonment.\n\nLICENSE\nUnless otherwise stated, Ebet Mo and/or its licensors own the intellectual property rights for all material on Ebet Mo. All intellectual property rights are reserved. You may access this from Ebet Mo for your own personal use subjected to restrictions set in these terms and conditions.\n\nYou must not: Republish material from Ebet Mo. Sell, rent or sub-license material from Ebet Mo. Redistribute content from Ebet Mo.\n\nHyperlinking to our Content\n
+The following organizations may link to our Application without prior written approval:\n
+Government agencies;\nSearch engines;\nNews organizations;\nOnline directory distributors may link to our Application in the same manner as they hyperlink to the Application of other listed businesses; and
+System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.
+These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party’s site.\n\nDisclaimer\nTo the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our application and the use of this application.\n
+Nothing in this disclaimer will:\nlimit or exclude our or your liability for death or personal injury;\nlimit or exclude our or your liability for fraud or fraudulent misrepresentation;\nlimit any of our or your liabilities in any way that is not permitted under applicable law.\nThe limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.
+
+"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_regular"/>
+
+
+                <CheckBox
+                    android:id="@+id/check_accept"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/blue"
+                    android:text="I certify that I am authorized to access this application."/>
+
+                <CheckBox
+                    android:id="@+id/check_not"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/blue"
+                    android:text="I take full responsibility for any actions I take while using this."/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_below="@id/context"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/accept_btn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_button"
+                android:text="Accept"
+                android:textColor="@color/panel"
+                android:textAllCaps="false"
+                android:layout_marginEnd="10dp"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/decline_btn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_panel"
+                android:text="Decline"
+                android:textColor="@color/panel"
+                android:textAllCaps="false"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_margin="20dp"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp">
+
+        <LinearLayout
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:background="@color/panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Draw Raffle"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="18sp"
+                android:text="Are you sure to Start the Draw?"
+                android:layout_marginBottom="15dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/no_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:background="@drawable/outline_blue_btn"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:id="@+id/yes_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:textColor="@color/panel"
+                    android:background="@drawable/blue_button"
+                    android:textSize="16sp"
+                    android:textAllCaps="false"/>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    tools:context=".edit_profile">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <RelativeLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/panel"
+            android:padding="15dp">
+
+            <ImageButton
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:src="@drawable/ic_close_white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="My Profile"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageButton
+                    android:id="@+id/upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/white_panel"
+                    android:elevation="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_camera" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="100dp">
+
+                    <ImageView
+                        android:id="@+id/profile"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@color/black"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/avatar" />
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:textColorHint="@color/blue">
+
+                <EditText
+                    android:id="@+id/fName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/panel"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="Full name"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/white" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:textColorHint="@color/blue">
+
+                <EditText
+                    android:id="@+id/user_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/panel"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="Contact"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/white" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:textColorHint="@color/blue">
+
+                <EditText
+                    android:id="@+id/user_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/panel"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="Address"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/white" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:textColorHint="@color/blue">
+
+                <EditText
+                    android:id="@+id/user_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/panel"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="Email"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/white" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:textColorHint="@color/blue"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/blue">
+
+                <EditText
+                    android:id="@+id/user_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/panel"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/white" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_input"
+                android:textColorHint="@color/blue">
+
+                <EditText
+                    android:id="@+id/user_bDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/panel"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="Birth date"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/white" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/verify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Unverified Account."
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/save_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_button"
+                android:layout_gravity="end"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="Save"
+                android:textColor="@color/panel"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:drawableStart="@drawable/ic_baseline_edit_24"
+                android:fontFamily="@font/montserrat_regular"/>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</ScrollView>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/main_bg"
+    android:layout_height="match_parent"
+    tools:context=".account">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/panel"
+        android:padding="15dp">
+
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="36dp"
+            android:layout_height="25dp"
+            android:background="@null"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_close_white" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/close"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="My Account"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/coin"
+            android:layout_toEndOf="@id/title"
+            android:textAlignment="textEnd"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="coin"
+            android:textColor="@color/blue"
+            android:textSize="20sp" />
+
+
+
+    </RelativeLayout>
+
+
+    
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="150dp">
+
+            <ImageView
+                android:id="@+id/user_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/default_image"
+                android:src="@drawable/avatar"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Full Name"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp"/>
+
+        <LinearLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/round_panel">
+
+            <Button
+                android:id="@+id/profile_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:background="@color/panel"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/white"
+                android:paddingStart="10dp"
+                android:textAllCaps="false"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="textStart"
+                android:drawableStart="@drawable/ic_account"
+                android:drawablePadding="10dp"/>
+
+            <Button
+                android:id="@+id/verification_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Verification"
+                android:background="@color/panel"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/white"
+                android:paddingStart="10dp"
+                android:textAllCaps="false"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="textStart"
+                android:drawableStart="@drawable/ic_verification_icon"
+                android:drawablePadding="10dp"/>
+
+
+            <Button
+                android:id="@+id/terms_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Terms and Condition"
+                android:background="@color/panel"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/white"
+                android:paddingStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:textAllCaps="false"
+                android:textAlignment="textStart"
+                android:drawableStart="@drawable/ic_terms"
+                android:drawablePadding="10dp"/>
+
+            <Button
+                android:id="@+id/logout_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:background="@color/panel"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/white"
+                android:paddingStart="10dp"
+                android:textAllCaps="false"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_logout_icon"
+                android:textAlignment="textStart"/>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

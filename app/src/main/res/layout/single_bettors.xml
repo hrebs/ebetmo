@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_panel"
+            android:padding="10dp">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/round"
+                android:layout_marginEnd="10dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:cardCornerRadius="80dp">
+
+
+                <ImageView
+                    android:id="@+id/bettor_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/default_image"
+                    android:scaleType="centerCrop"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/bettor_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/round"
+                android:fontFamily="@font/montserrat_bold"
+                android:singleLine="true"
+                android:text="Bettor Name"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/bettor_slot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_below="@id/bettor_name"
+                android:layout_toEndOf="@id/round"
+                android:text="##"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat_bold"/>
+
+
+
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

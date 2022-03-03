@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    tools:context=".raffle">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:background="@color/panel">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:drawableStart="@drawable/ic_star_yellow"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Raffle Draw"
+                android:textColor="@color/yellow"
+                android:textSize="20sp" />
+
+
+            <ImageButton
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close_white"
+                android:background="@null"
+                android:layout_centerVertical="true"/>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Betting Item"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/montserrat_bold"
+                android:layout_marginBottom="5dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="15dp">
+
+                <ImageView
+                    android:id="@+id/item_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/default_image"
+                    android:src="@drawable/default_image"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Item Name"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/item_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Item Description"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Item Price"
+                android:textColor="@color/blue"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="14sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/gray"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WINNER"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/yellow"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/win_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/white"
+                android:textSize="60sp"/>
+
+            <TextView
+                android:id="@+id/slot_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Slots"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btn_draw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/yellow_button"
+                android:text="Draw Winner"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/btn_view_winner"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/outline_blue_btn"
+                android:text="View Winner"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textAllCaps="false"/>
+
+            <TextView
+                android:id="@+id/win_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Winner Name"
+                android:textSize="18sp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/yellow"/>
+
+
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/gray"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bettors"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="16sp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/bettors_rv"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"/>
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    tools:context=".home">
+
+    <RelativeLayout
+        android:id="@+id/top_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/panel"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
+
+        <ImageView
+            android:id="@+id/logo_image"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo" />
+
+        <ImageButton
+            android:id="@+id/main_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:src="@drawable/ic_menu_white" />
+
+
+        <TextView
+            android:id="@+id/coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/main_menu"
+            android:layout_toEndOf="@+id/logo_image"
+            android:fontFamily="@font/montserrat_regular"
+            android:singleLine="true"
+            android:text="coin"
+            android:textAlignment="textEnd"
+            android:textColor="@color/blue"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/empty_items" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="No Items found."
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Just wait for the items to be placed."
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/item_rv"
+        android:visibility="gone"
+        android:paddingBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/low_nav"
+        android:layout_below="@id/top_nav"
+        android:paddingStart="10dp" />
+
+
+    <LinearLayout
+        android:padding="5dp"
+        android:id="@+id/low_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/panel"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:backgroundTint="@color/panel"
+            android:drawableTop="@drawable/ic_home_white"
+            android:drawableBottom="@null"
+            android:elevation="0dp"
+            android:text="Home"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/blue"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/notification"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/panel"
+            android:background="@null"
+            android:drawableTop="@drawable/ic_notify_white"
+            android:text="Notifications"
+            android:textColor="@color/white"
+            android:fontFamily="@font/montserrat_regular"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/account"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/panel"
+            android:background="@null"
+            android:drawableTop="@drawable/ic_account"
+            android:text="Account"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/white"
+            android:textAllCaps="false" />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</RelativeLayout>

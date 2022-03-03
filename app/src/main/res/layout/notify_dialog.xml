@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_margin="30dp"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp">
+
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:src="@drawable/ic_close_white"
+            android:layout_gravity="end"
+            android:background="@null"
+            android:layout_margin="15dp"/>
+
+        <LinearLayout
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:background="@color/panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Betting is Closed!"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="14sp"
+                android:text="The betting is Over."
+                android:layout_marginBottom="15dp"/>
+
+            <RelativeLayout
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_star_yellow"
+                    android:elevation="10dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+
+                    app:cardCornerRadius="10dp">
+
+                    <ImageView
+                        android:id="@+id/item_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+
+                        android:src="@drawable/default_image"/>
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Item Name"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="18sp"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:text="Winner"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="16sp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/winner_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Winner Name"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="18sp"
+                android:layout_gravity="center"/>
+
+
+
+
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/view_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/yellow_button"
+                    android:layout_marginEnd="10dp"
+                    android:text="View Details"
+                    android:textAllCaps="false"
+                    android:textColor="@color/panel"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="16sp" />
+
+
+                <Button
+                    android:id="@+id/ok_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/outline_blue_btn"
+                    android:text="Ok"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>

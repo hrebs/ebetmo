@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_margin="20dp"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp">
+        <ImageButton
+            android:id="@+id/close"
+            android:elevation="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/panel"
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_close_white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/panel"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="15dp"
+            tools:ignore="MissingConstraints">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Upload your ID"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="200dp"
+                android:layout_height="200dp">
+
+                <ImageButton
+                    android:id="@+id/pick_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_panel"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:elevation="10dp"
+                    android:src="@drawable/ic_camera" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10dp">
+
+                    <ImageView
+                        android:id="@+id/id_picture"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/id" />
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/done_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:textAllCaps="false"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/outline_blue_btn"
+                android:textColor="@color/blue"/>
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>

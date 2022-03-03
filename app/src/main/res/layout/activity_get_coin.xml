@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    tools:context=".get_coin">
+
+    <RelativeLayout
+        android:id="@+id/top_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/panel"
+        android:padding="10dp">
+
+        <ImageButton
+            android:background="@null"
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top Up"
+            android:textColor="@color/white"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_centerHorizontal="true"
+            android:textSize="25sp"/>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/coin_choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_nav"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/white_panel"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/add_coin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="0.00"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+
+    </RelativeLayout>
+
+    <GridLayout
+        android:id="@+id/grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/coin_choose"
+        android:background="@color/panel"
+        android:layout_centerHorizontal="true"
+        android:columnCount="3"
+        android:padding="10dp"
+        android:rowCount="6">
+
+        <Button
+            android:id="@+id/five"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginBottom="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱5"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/ten"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱10"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/twenty"
+            android:layout_rowWeight="0"
+            android:layout_columnWeight="0"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginBottom="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱20"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/fifty"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱50"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/one_hundred"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱100"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/two_hundred"
+            android:layout_rowWeight="0"
+            android:layout_columnWeight="0"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginBottom="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱200"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/five_hundred"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱500"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/one_thousand"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱1000"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/two_thousand"
+            android:layout_rowWeight="0"
+            android:layout_columnWeight="0"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginBottom="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱2000"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/three_thousand"
+            android:layout_rowWeight="0"
+            android:layout_columnWeight="0"
+            android:layout_margin="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱3000"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/four_thousand"
+            android:layout_rowWeight="0"
+            android:layout_columnWeight="0"
+            android:layout_margin="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱4000"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/five_thousand"
+            android:layout_rowWeight="0"
+            android:layout_columnWeight="0"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginBottom="5sp"
+            android:background="@drawable/coin_btn"
+            android:text="₱5000"
+            android:textColor="@color/white" />
+
+
+    </GridLayout>
+
+
+    <Button
+        android:id="@+id/proceed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/grid"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/blue_button"
+        android:text="Proceed"
+        android:textAllCaps="false" />
+
+
+</RelativeLayout>

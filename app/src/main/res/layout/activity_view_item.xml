@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    tools:context=".view_item">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/item_slots"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentEnd="true"
+                android:text="Slots"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="18sp"
+                android:textColor="@color/panel"
+                android:elevation="10dp"
+                android:background="@drawable/slots_bg"/>
+
+            <ImageButton
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_panel"
+                android:src="@drawable/ic_back_white"
+                android:elevation="10dp"
+                android:padding="10dp"
+                android:layout_margin="15dp"/>
+
+            <ImageView
+                android:id="@+id/item_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_image" />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Item name"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/item_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Item name"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Price"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Item price"
+                android:textColor="@color/yellow"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Raffle Date"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/item_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Item name"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Type"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/item_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Item type"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Status"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/item_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Item status"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Winner"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/item_winner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/yellow_button"
+                android:fontFamily="@font/montserrat_bold"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Unknown"
+                android:textColor="@color/main_bg"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Seller"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/item_owner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Item Seller"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+
+            <LinearLayout
+                android:id="@+id/entry_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_panel"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Your Entry"
+                    android:textColor="@color/yellow" />
+
+                <TextView
+                    android:id="@+id/slot_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Slot number"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Date bet"
+                    android:textColor="@color/blue"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/bet_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Date"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/manager_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/form"
+            android:orientation="horizontal"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/edit_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/panel"
+                android:layout_weight="1"
+                android:background="@drawable/blue_button"
+                android:drawableStart="@drawable/ic_baseline_edit_24"
+                android:fontFamily="@font/montserrat_bold"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Edit info"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/start_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+
+                android:textColor="@color/panel"
+                android:background="@drawable/yellow_button"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Start Instant Raffle"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>
