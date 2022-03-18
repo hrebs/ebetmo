@@ -55,7 +55,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/default_image" />
+                    android:src="@drawable/default_image"
+                    android:onClick="insertPic1"/>
 
                 <Button
                     android:id="@+id/upload_image"
@@ -109,6 +110,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/panel"
                     android:hint="Item Description"
+
                     android:textColor="@color/white" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -127,6 +129,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/panel"
                     android:hint="Type of betting"
+                    android:text="Raffle"
+                    android:enabled="false"
                     android:textColor="@color/white" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -198,6 +202,7 @@
                 android:background="@drawable/blue_button"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="Post Item"
+                android:onClick="addItem"
                 android:textColor="@color/panel"
                 android:textAllCaps="false"
                 android:textSize="18sp" />

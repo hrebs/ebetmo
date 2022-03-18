@@ -211,6 +211,7 @@
                 android:textSize="16sp"
                 android:fontFamily="@font/montserrat_regular"
                 android:drawableEnd="@drawable/ic_logout_icon"/>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -318,11 +319,20 @@
                     android:id="@+id/submit_verification"
                     android:text="Submit"
                     android:background="@drawable/blue_button"
+                    android:enabled="false"
                     android:textColor="@color/panel"
                     android:textSize="18sp"
+                    android:onClick="submit"
                     android:textAllCaps="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+
+                <WebView
+                    android:id="@+id/webView2"
+                    android:layout_width="342dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    tools:ignore="WebViewLayout" />
 
 
             </LinearLayout>

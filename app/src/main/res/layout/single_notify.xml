@@ -91,7 +91,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/owner"
+            android:id="@+id/item_id1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_date"
@@ -101,7 +101,8 @@
             android:text="owner name"
             android:textAlignment="textEnd"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="invisible" />
 
 
     </RelativeLayout>

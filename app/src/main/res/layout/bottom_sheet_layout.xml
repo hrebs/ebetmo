@@ -33,9 +33,9 @@
             android:id="@+id/item_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/default_image"
             android:background="@drawable/default_image"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_image" />
 
     </RelativeLayout>
 
@@ -84,7 +84,7 @@
             android:layout_below="@id/item_des"
             android:text="Price"
             android:textColor="@color/yellow"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
 
         <TextView
@@ -128,11 +128,11 @@
             <ImageButton
                 android:id="@+id/view_info"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_about_icon"
-                android:background="@null"/>
+                android:background="@null"
+                android:src="@drawable/ic_about_icon" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -162,11 +162,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:background="@drawable/blue_button"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="Bet"
-                android:layout_gravity="center"
                 android:textAllCaps="false"
                 android:textSize="18sp" />
 
@@ -175,6 +175,20 @@
 
 
 
+
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="no"
+        android:visibility="invisible"/>
+
+    <WebView
+        android:id="@+id/webView1"
+        android:layout_width="306dp"
+        android:visibility="invisible"
+        android:layout_height="2dp" />
 
 </LinearLayout>

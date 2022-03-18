@@ -22,8 +22,6 @@ public class view_user extends AppCompatActivity {
     ImageButton close;
     TextView user_name, user_email,user_location, user_contact;
     ImageView user_image;
-    SQLiteDatabase sqLiteDatabase;
-    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,41 +41,8 @@ public class view_user extends AppCompatActivity {
             }
         });
 
-        try{
-            dbHelper = new DBHelper(getApplicationContext());
-            sqLiteDatabase = dbHelper.getWritableDatabase();
-        }catch (Exception e){
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Error. Reload App!", Toast.LENGTH_SHORT).show();
-
-        }
-
-        if(getIntent().getBundleExtra("user_data")!=null){
-            Bundle bundle = getIntent().getBundleExtra("user_data");
-            user_id = String.valueOf(bundle.getInt("user_id"));
-
-            displayUser(user_id);
 
 
-        }
     }
 
-    private void displayUser(String user_id) {
-        Cursor c = sqLiteDatabase.rawQuery("SELECT * FROM users WHERE id =  ?", new String[]{user_id});
-        if (c.getCount()>0){
-            while(c.moveToNext()){
-                user_name.setText(c.getString(1));
-                user_email.setText(c.getString(4));
-                user_contact.setText(c.getString(2));
-                user_location.setText(c.getString(3));
-
-                byte[] image = c.getBlob(6);
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0,image.length);
-                user_image.setImageBitmap(bitmap);
-            }
-        }else{
-            Toast.makeText(this, "Failed to fetch user", Toast.LENGTH_SHORT).show();
-            finish();
-        }
-    }
 }

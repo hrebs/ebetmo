@@ -35,11 +35,11 @@
 
             <TextView
                 android:id="@+id/item_des"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/item_name"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/montserrat_regular"
                 android:maxLines="2"
                 android:text="Description"
@@ -51,10 +51,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/item_des"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="price"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="price"
                 android:textColor="@color/blue"
                 android:textSize="20sp" />
 
@@ -64,22 +64,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:background="@drawable/default_image"
+                android:onClick="clickImage"
                 android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/slots"
-                android:background="@drawable/slots_bg"
-                android:layout_marginTop="10dp"
-                android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="slots"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/slots_bg"
                 android:fontFamily="@font/montserrat_regular"
+                android:padding="5dp"
+                android:text="slots"
                 android:textColor="@color/main_bg" />
 
 
         </RelativeLayout>
+        <TextView
+            android:id="@+id/item_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="TextView" />
 
     </androidx.cardview.widget.CardView>
 

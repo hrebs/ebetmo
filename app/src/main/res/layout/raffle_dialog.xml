@@ -107,8 +107,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/gray"/>
-            
-            
+
+
+
+
         </LinearLayout>
         
         
@@ -195,7 +197,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/bettors_rv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginVertical="2dp"
+                app:layoutManager="LinearLayoutManager"/>
 
 
         </LinearLayout>

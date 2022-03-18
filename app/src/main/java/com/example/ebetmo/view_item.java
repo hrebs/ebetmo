@@ -1,13 +1,17 @@
 package com.example.ebetmo;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -16,18 +20,37 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Date;
+
 public class view_item extends AppCompatActivity {
     TextView name, des, price, status, slots, date, winner,type,slotNumber,betDate, item_owner;
     ImageButton back;
     ImageView item_image;
     String item_id;
-    SQLiteDatabase sqLiteDatabase;
-    DBHelper dbHelper;
     LinearLayout manager_button, entry_panel;
-    SessionManager sessionManager;
     String current_user_id, owner_id;
     Button edit, start;
+    private RequestQueue queue;
 
+    //TextView labels[] = new TextView[10];
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,46 +73,41 @@ public class view_item extends AppCompatActivity {
         item_owner = findViewById(R.id.item_owner);
         start = findViewById(R.id.start_btn);
 
-        if(getIntent().getBundleExtra("item_data")!=null){
-            Bundle bundle = getIntent().getBundleExtra("item_data");
-            item_id = String.valueOf(bundle.getInt("item_id"));
+        getOneItem(FormData.getItemId);
 
+        name.setText(FormData.item_info[0]);
+        des.setText(FormData.item_info[1]);
+        File imgFile = new File(FormData.item_info[2]);
+        type.setText(FormData.item_info[3]);
+        date.setText(FormData.item_info[4]);
+        price.setText(FormData.item_info[5]);
+        slots.setText(FormData.item_info[6]);
+        winner.setText(FormData.item_info[7]);
+        status.setText(FormData.item_info[8]);
+        item_owner.setText(FormData.profile_info[0]);
+        slotNumber.setText(FormData.bet_info[4]);
+        betDate.setText(getCurrentLocalDateTimeStamp());
 
+        if(imgFile.exists()){
+            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            item_image.setImageBitmap(myBitmap);
         }
 
-        try{
-            dbHelper = new DBHelper(getApplicationContext());
-            sqLiteDatabase = dbHelper.getWritableDatabase();
-            sessionManager = new SessionManager(this);
-            current_user_id = sessionManager.getId();
-            displayItemsInfo(item_id);
-            checkManager(item_id);
-            checkBet(item_id,current_user_id);
-            displaySeller(owner_id);
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Error. Reload App!", Toast.LENGTH_SHORT).show();
-
+        if(winner.getText().toString().equals("0")){
+            winner.setText("Undecided");
         }
+
+        if(slotNumber.getText().toString().equals("")){
+            slotNumber.setText("In raffle.");
+        }
+
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("item_id",Integer.parseInt(item_id));
-                    bundle.putInt("owner_id",Integer.parseInt(owner_id));
-                    Intent intent=new Intent(getApplicationContext(),raffle.class);
-                    intent.putExtra("item_data",bundle);
-                    startActivity(intent);
-                }catch (Exception e){
-                    e.printStackTrace();
-                    finish();
-                    Toast.makeText(getApplicationContext(), "Error: Try Again!", Toast.LENGTH_SHORT).show();
 
-                }
+                    Intent intent=new Intent(getApplicationContext(),raffle.class);
+                    startActivity(intent);
 
             }
         });
@@ -97,42 +115,16 @@ public class view_item extends AppCompatActivity {
         item_owner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("user_id",Integer.parseInt(owner_id));
-                    Intent intent=new Intent(getApplicationContext(),view_user.class);
-                    intent.putExtra("user_data",bundle);
-                    startActivity(intent);
-                }catch (Exception e){
-                    e.printStackTrace();
-                    finish();
-                    Toast.makeText(getApplicationContext(), "Error: Try Again!", Toast.LENGTH_SHORT).show();
 
-                }
             }
         });
 
         winner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("item_id",Integer.parseInt(item_id));
-                    bundle.putInt("owner_id",Integer.parseInt(owner_id));
-                    Intent intent=new Intent(getApplicationContext(),raffle.class);
-                    intent.putExtra("item_data",bundle);
-                    startActivity(intent);
-                }catch (Exception e){
-                    e.printStackTrace();
-                    finish();
-                    Toast.makeText(getApplicationContext(), "Error: Try Again!", Toast.LENGTH_SHORT).show();
-
-                }
 
             }
         });
-
-
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,100 +133,91 @@ public class view_item extends AppCompatActivity {
             }
         });
 
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try{
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("item_id",Integer.parseInt(item_id));
-                    bundle.putString("item_name", name.getText().toString().trim());
-                    Intent intent=new Intent(getApplicationContext(),add_item.class);
-                    intent.putExtra("item_data",bundle);
-                    startActivity(intent);
-                }catch (Exception e){
-                    e.printStackTrace();
-                    finish();
-                    Toast.makeText(getApplicationContext(), "Error: Try Again!", Toast.LENGTH_SHORT).show();
+    }
 
+    public void getOneItem(String getId){
+        try{
+            int id = Arrays.asList(FormData.id1).indexOf(getId);
+
+            String temp;
+
+            temp = FormData.itemName[id];
+            FormData.item_info[0] = temp;
+
+            temp = FormData.des[id];
+            FormData.item_info[1] = temp;
+
+            temp = FormData.image1[id];
+            FormData.item_info[2] = temp;
+
+            temp = FormData.type1[id];
+            FormData.item_info[3] = temp;
+
+            temp = FormData.date[id];
+            FormData.item_info[4] = temp;
+
+            temp = FormData.price1[id];
+            FormData.item_info[5] = temp;
+
+            temp = FormData.slots1[id];
+            FormData.item_info[6] = temp;
+
+            temp = FormData.win[id];
+            FormData.item_info[7] = temp;
+
+            temp = FormData.stats[id];
+            FormData.item_info[8] = temp;
+        }
+        catch (Exception e){
+
+        }
+    }
+
+    private void getBet() {
+        queue = Volley.newRequestQueue(this);
+        String url = "http://"+Final_IP.IP_ADDRESS+"/betting/get_pf.php?em="+FormData.email;
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    int i;
+                    String temp;
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONArray("list");
+                    JSONObject object = jsonArray.getJSONObject(0);
+
+                    temp = object.getString(FormData.id_nm);
+                    FormData.id = temp;
+
+                    Log.d("id",FormData.id);
+
+                    temp = object.getString(FormData.coin_nm);
+                    FormData.coin = temp;
+
+                    for(i=0;i<FormData.profile_labels.length;i++){
+                        temp = object.getString(FormData.profile_labels[i]);
+                        FormData.profile_info[i] = temp;
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(view_item.this, "Invalid action.", Toast.LENGTH_SHORT).show();
             }
         });
 
+        queue.add(request);
+        super.onStart();
     }
-
-    private void displaySeller(String owner_id) {
-        Cursor c = sqLiteDatabase.rawQuery("Select fullName FROM users WHERE id = ?", new String[]{owner_id});
-        while(c.moveToNext()) item_owner.setText(c.getString(0));
-    }
-
-    private void checkBet(String item_id, String current_user_id) {
-        Cursor c = sqLiteDatabase.rawQuery("SELECT * FROM bets WHERE owner_id =? and item_id=?", new String[]{current_user_id,item_id});
-        if (c.getCount()>0){
-            entry_panel.setVisibility(View.VISIBLE);
-            while(c.moveToNext()){
-                slotNumber.setText("Slot number: "+c.getString(6));
-                betDate.setText(c.getString(7));
-            }
-            c.close();
-
-        }else{
-            entry_panel.setVisibility(View.GONE);
-        }
-    }
-
-    private void checkManager(String item_id) {
-        String item_owner_id = "0";
-        Cursor c = sqLiteDatabase.rawQuery("SELECT owner_id FROM items where id=?", new String[]{item_id});
-        if (c.getCount()>0){
-            while (c.moveToNext()){
-                item_owner_id = c.getString(0);
-            }
-            if (item_owner_id.equals(current_user_id)){
-                manager_button.setVisibility(View.VISIBLE);
-            }else manager_button.setVisibility(View.GONE);
-
-
-        }else{
-            Toast.makeText(this, "Failed to match ID of manager", Toast.LENGTH_SHORT).show();
-            manager_button.setVisibility(View.GONE);
-        }
-        c.close();
-    }
-
-    private void displayItemsInfo(String item_id) {
-        Cursor c = sqLiteDatabase.rawQuery("SELECT * FROM items WHERE id =?", new String[]{item_id});
-        if (c.getCount()>0){
-            while(c.moveToNext()){
-                name.setText(c.getString(2));
-                des.setText(c.getString(3));
-                double getPrice = Double.parseDouble(c.getString(7));
-                price.setText("₱"+getPrice);
-
-                String getStatus = c.getString(10);
-                if (getStatus.equals("open")) status.setText("Open for Betting");
-                else status.setText("Betting is Closed.");
-
-                slots.setText(c.getString(8)+" Slots");
-                date.setText(c.getString(6));
-                String getWinner = c.getString(9);
-                if(getWinner.equals("0")||getWinner.equals("")) winner.setText("Unknown");
-                else{
-                    winner.setText(getWinner);
-                }
-
-                type.setText(c.getString(5));
-
-                byte[]image = c.getBlob(4);
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0,image.length);
-                item_image.setImageBitmap(bitmap);
-
-                owner_id = c.getString(1);
-            }
-        }else{
-            Toast.makeText(this, "Failed to fetch info.", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getApplicationContext(), home.class));
-            finish();
-        }
-        c.close();
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public String getCurrentLocalDateTimeStamp() {
+        //ZoneId z = ZoneId.of("Asia/Singapore");
+        return LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm"));
     }
 }

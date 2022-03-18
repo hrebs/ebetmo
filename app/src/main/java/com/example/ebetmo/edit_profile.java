@@ -1,64 +1,67 @@
 package com.example.ebetmo;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.ContentValues;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 
 public class edit_profile extends AppCompatActivity {
-    SQLiteDatabase sqLiteDatabase;
-    DBHelper dbHelper;
-    SessionManager sessionManager;
-    LoadingDialog loadingDialog;
-    String current_ID;
+    private final int REQUEST_CAMERA = 1, REQUEST_GALLERY = 0;
+    private Bitmap itemBitmap;
+
     EditText name, contact, address, email, password, date;
     Button save;
     ImageView avatar;
     TextView verify;
     ImageButton close, camera;
 
+    EditText []inputs = new EditText[6];
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         findId();
 
-        try{
-            sessionManager = new SessionManager(this);
-            dbHelper = new DBHelper(getApplicationContext());
-            sqLiteDatabase = dbHelper.getWritableDatabase();
-            current_ID = sessionManager.getId();
-            loadingDialog = new LoadingDialog(this);
-            displayProfile(current_ID);
+        name.setText(FormData.profile_info[0]);
+        contact.setText(FormData.profile_info[1]);
+        address.setText(FormData.profile_info[2]);
+        email.setText(FormData.profile_info[3]);
+        password.setText(FormData.profile_info[4]);
+        date.setText(FormData.profile_info[7]);
+        verify.setText(FormData.profile_info[6]+" Account.");
 
+        File imgFile = new File(FormData.profile_info[5]);
 
-
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Error. Reload App!", Toast.LENGTH_SHORT).show();
-
+        if(imgFile.exists()){
+            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            avatar.setImageBitmap(myBitmap);
         }
+
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,84 +70,44 @@ public class edit_profile extends AppCompatActivity {
             }
         });
 
-        camera.setOnClickListener(v -> mGetContent .launch("image/*"));
-
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadingDialog.showLoading("Loading...");
+                try{
+                    String url1 = "";
+                    for(int i=0; i<inputs.length;i++){
+                        url1 = url1 + FormData.profile_labels1[i] + "=" + inputs[i].getText().toString() + "&";
+                    }
 
-                Bitmap bitmap=((BitmapDrawable)avatar.getDrawable()).getBitmap();
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                byte[]image = stream.toByteArray();
-                String name1 = name.getText().toString().trim();
-                String email1 = email.getText().toString().trim();
-                String contact1 = contact.getText().toString().trim();
-                String password1 = password.getText().toString().trim();
-                String bDate1 = date.getText().toString().trim();
-                String address1 = address.getText().toString().trim();
+                    String URL = "http://"+Final_IP.IP_ADDRESS+"/betting/update_user.php?" + url1 + "pf=" + FormData.imageLocation + "&id=" + FormData.id;
 
-                ContentValues contentValues = new ContentValues();
-                contentValues.put("fullName", name1);
-                contentValues.put("contact", contact1);
-                contentValues.put("email", email1);
-                contentValues.put("password", password1);
-                contentValues.put("profile", image);
-                contentValues.put("b_day", bDate1);
-                contentValues.put("address", address1);
+                    WebView view1 = findViewById(R.id.webView);
 
-                long result = sqLiteDatabase.update("users",contentValues,"id="+current_ID,null);
-                if(result==-1){
-                    Toast.makeText(getApplicationContext(), "Failed updating account.", Toast.LENGTH_SHORT).show();
-                    loadingDialog.hideLoading();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Your account is updated.", Toast.LENGTH_SHORT).show();
+                    view1.loadUrl(URL);
+                    view1.getSettings().setJavaScriptEnabled(true);
+
+                    Toast.makeText(edit_profile.this, "Updated Successfully.", Toast.LENGTH_SHORT).show();
+
                     startActivity(new Intent(getApplicationContext(), account.class));
                     finish();
-                    updateSession(current_ID);
-
                 }
+                catch (Exception e){
+                    Toast.makeText(edit_profile.this, "Updated Successfully.", Toast.LENGTH_SHORT).show();
 
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                }
             }
         });
-
-
-
-    }
-
-    private void updateSession(String id) {
-        Cursor c = sqLiteDatabase.rawQuery("SELECT * FROM users WHERE id = ?", new String[]{id});
-        try{
-            if (c.getCount()>0){
-                while(c.moveToNext()){
-                    sessionManager.setId(String.valueOf(c.getInt(0)));
-                    sessionManager.setName(c.getString(1));
-                    sessionManager.setCoin(c.getString(9));
-                    sessionManager.setValid(c.getString(7));
-                    sessionManager.setEmail(c.getString(4));
-                }
-                c.close();
-            }else{
-                Toast.makeText(this, "Failed to store session", Toast.LENGTH_SHORT).show();
-            }
-
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Error: Fetching Session!", Toast.LENGTH_SHORT).show();
-
-        }
     }
 
     private void findId() {
-        name = findViewById(R.id.fName);
-        contact = findViewById(R.id.user_contact);
-        address = findViewById(R.id.user_address);
-        email = findViewById(R.id.user_email);
-        password = findViewById(R.id.user_password);
-        date = findViewById(R.id.user_bDay);
+        name = inputs[0] = findViewById(R.id.fName);
+        contact = inputs[1] = findViewById(R.id.user_contact);
+        address = inputs[2] =findViewById(R.id.user_address);
+        email = inputs[3] =findViewById(R.id.user_email);
+        password = inputs[4] =findViewById(R.id.user_password);
+        date = inputs[5] =findViewById(R.id.user_bDay);
         save = findViewById(R.id.save_btn);
         avatar = findViewById(R.id.profile);
         verify = findViewById(R.id.verify);
@@ -152,40 +115,102 @@ public class edit_profile extends AppCompatActivity {
         camera = findViewById(R.id.upload);
     }
 
-    private void displayProfile(String current) {
-        sqLiteDatabase =dbHelper.getWritableDatabase();
-        Cursor c = sqLiteDatabase.rawQuery("SELECT * FROM users WHERE id=?", new String[]{current});
-        if (c.getCount()>0){
-            while(c.moveToNext()){
-                name.setText(c.getString(1));
-                contact.setText(c.getString(2));
-                address.setText(c.getString(3));
-                email.setText(c.getString(4));
-                password.setText(c.getString(5));
-                date.setText(c.getString(8));
 
-                byte[]profile = c.getBlob(6);
-                Bitmap bitmap = BitmapFactory.decodeByteArray(profile, 0,profile.length);
-                avatar.setImageBitmap(bitmap);
-
-                String v = c.getString(7);
-                if (v.equals("Verified"))verify.setText("Account verified.");
-                else verify.setText("Unverified account.");
-
-
-            }
-        }else Toast.makeText(this, "No Data Fetch!", Toast.LENGTH_SHORT).show();
-
+    private void getPic()
+    {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        galleryIntent.setType(getString(R.string.galleryType));
+        startActivityForResult(galleryIntent.createChooser(galleryIntent, "Select Images"), REQUEST_GALLERY);
     }
 
-    ActivityResultLauncher<String> mGetContent =registerForActivityResult(
-            new ActivityResultContracts.GetContent(),
-            new ActivityResultCallback<Uri>() {
-                @Override
-                public void onActivityResult(Uri result) {
-                    avatar.setImageURI(result);
+    private void takePic()
+    {
+        Intent takePicIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(takePicIntent, REQUEST_CAMERA);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK)
+        {
+            if(requestCode == REQUEST_CAMERA)
+            {
+
+                itemBitmap = (Bitmap) data.getExtras().get("data");
+                avatar.setImageBitmap(itemBitmap);
+
+                // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
+                Uri tempUri = getImageUri(getApplicationContext(), itemBitmap);
+
+                // CALL THIS METHOD TO GET THE ACTUAL PATH
+                File finalFile = new File(getRealPathFromURI(tempUri));
+
+                FormData.imageLocation = finalFile.getAbsolutePath();
+
+
+            }
+            else if(requestCode == REQUEST_GALLERY && data != null)
+            {
+                try {
+                    itemBitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),
+                            data.getData());
+                    avatar.setImageBitmap(itemBitmap);
+
+                    // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
+                    Uri tempUri = getImageUri(getApplicationContext(), itemBitmap);
+
+                    // CALL THIS METHOD TO GET THE ACTUAL PATH
+                    File finalFile = new File(getRealPathFromURI(tempUri));
+
+                    FormData.imageLocation = finalFile.getAbsolutePath();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
-    );
+        }
+    }
+
+    public void insertPic(View view){
+        final CharSequence[] items = {"Camera", "Gallery", "Cancel"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Upload Item Image");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(items[which].equals("Camera"))
+                    takePic();
+                else if(items[which].equals("Gallery"))
+                    getPic();
+                else if(items[which].equals("Cancel"))
+                    dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
+    public String getRealPathFromURI(Uri uri) {
+        String path = "";
+        if (getContentResolver() != null) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            if (cursor != null) {
+                cursor.moveToFirst();
+                int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+                path = cursor.getString(idx);
+                cursor.close();
+            }
+        }
+        return path;
+    }
 }
+
+

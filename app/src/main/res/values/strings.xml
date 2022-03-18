@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EBetMo</string>
+    <string name="galleryType">image/*</string>
 </resources>
